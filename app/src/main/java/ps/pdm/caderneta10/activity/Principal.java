@@ -1,9 +1,11 @@
-package ps.pdm.caderneta10;
+package ps.pdm.caderneta10.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import ps.pdm.caderneta10.R;
 
 
 public class Principal extends ActionBarActivity {
