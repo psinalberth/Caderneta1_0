@@ -10,14 +10,14 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "FREQUENCIA")
 public class Frequencia {
 
-    @DatabaseField(id = true, foreign = true, uniqueCombo = true)
+    @DatabaseField(foreign = true, uniqueCombo = true, dataType = DataType.SERIALIZABLE)
     private Aluno aluno;
 
-    @DatabaseField(id = true, foreign = true, uniqueCombo = true)
+    @DatabaseField(foreign = true, uniqueCombo = true, dataType = DataType.SERIALIZABLE)
     private Aula aula;
 
     @DatabaseField(dataType = DataType.INTEGER)
-    private Integer falta;
+    private int falta;
 
     public Frequencia() {
 
@@ -39,11 +39,11 @@ public class Frequencia {
         this.aula = aula;
     }
 
-    public Integer getFalta() {
+    public int getFalta() {
         return falta;
     }
 
-    public void setFalta(Integer falta) {
+    public void setFalta(int falta) {
         this.falta = falta;
     }
 }

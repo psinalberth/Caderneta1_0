@@ -5,6 +5,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -14,9 +15,9 @@ import java.util.HashSet;
  */
 
 @DatabaseTable(tableName = "AULA")
-public class Aula {
+public class Aula implements Serializable {
 
-    @DatabaseField(id = true, generatedId = true)
+    @DatabaseField(generatedId = true)
     private Long id;
 
     @DatabaseField(canBeNull = false)
@@ -25,7 +26,7 @@ public class Aula {
     @DatabaseField(canBeNull = false, dataType = DataType.DATE)
     private Date data;
 
-    @DatabaseField(canBeNull = false, foreign = true)
+    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
     private Tuplina tuplina;
 
     @ForeignCollectionField(eager = false)

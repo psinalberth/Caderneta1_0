@@ -14,14 +14,14 @@ import java.util.HashSet;
 @DatabaseTable(tableName = "DISCIPLINA")
 public class Disciplina {
 
-    @DatabaseField(id = true, generatedId = true)
+    @DatabaseField(generatedId = true)
     private Long id;
 
     @DatabaseField(canBeNull = false)
     private String nome;
 
     @DatabaseField(canBeNull = false, dataType = DataType.INTEGER)
-    private Integer cargaHoraria;
+    private int cargaHoraria;
 
     @ForeignCollectionField(eager = false)
     private Collection<Tuplina> tuplinas = new HashSet<Tuplina>();
@@ -46,11 +46,11 @@ public class Disciplina {
         this.nome = nome;
     }
 
-    public Integer getCargaHoraria() {
+    public int getCargaHoraria() {
         return cargaHoraria;
     }
 
-    public void setCargaHoraria(Integer cargaHoraria) {
+    public void setCargaHoraria(int cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
     }
 

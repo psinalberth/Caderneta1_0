@@ -5,6 +5,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -12,9 +13,9 @@ import java.util.HashSet;
  * Created by inalberth on 23/05/15.
  */
 @DatabaseTable(tableName = "TURMA")
-public class Turma {
+public class Turma implements Serializable {
 
-    @DatabaseField(id = true, generatedId = true)
+    @DatabaseField(generatedId = true)
     private Long id;
 
     @DatabaseField(canBeNull = false)
@@ -24,9 +25,9 @@ public class Turma {
     private String turno;
 
     @DatabaseField(canBeNull = false, dataType = DataType.INTEGER)
-    private Integer ano;
+    private int ano;
 
-    @DatabaseField(canBeNull = false, foreign = true)
+    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
     private Escola escola;
 
     @ForeignCollectionField(eager = false)
@@ -63,11 +64,11 @@ public class Turma {
         this.turno = turno;
     }
 
-    public Integer getAno() {
+    public int getAno() {
         return ano;
     }
 
-    public void setAno(Integer ano) {
+    public void setAno(int ano) {
         this.ano = ano;
     }
 

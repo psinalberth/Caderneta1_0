@@ -13,7 +13,7 @@ import java.util.HashSet;
 @DatabaseTable(tableName = "ESCOLA")
 public class Escola {
 
-    @DatabaseField(id = true, generatedId = true)
+    @DatabaseField(generatedId = true)
     private Long id;
 
     @DatabaseField(canBeNull = false)

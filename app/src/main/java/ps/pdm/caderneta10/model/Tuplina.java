@@ -13,13 +13,13 @@ import java.util.HashSet;
 @DatabaseTable(tableName = "TUPLINA")
 public class Tuplina {
 
-    @DatabaseField(id = true, generatedId = true)
+    @DatabaseField(generatedId = true)
     private Long id;
 
-    @DatabaseField(canBeNull = false, foreign = true)
+    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
     private Disciplina disciplina;
 
-    @DatabaseField(canBeNull = false, foreign = true)
+    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
     private Turma turma;
 
     @ForeignCollectionField(eager = false)

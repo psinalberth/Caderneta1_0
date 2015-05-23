@@ -2,18 +2,25 @@ package ps.pdm.caderneta10.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import ps.pdm.caderneta10.R;
+import ps.pdm.caderneta10.util.DatabaseUtils;
 
 
 public class Principal extends ActionBarActivity {
+
+    private DatabaseUtils databaseUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+        databaseUtils = new DatabaseUtils(this);
+        databaseUtils.getWritableDatabase();
+        Log.i("HELLO", "HELLO WORLD!");
     }
 
 
