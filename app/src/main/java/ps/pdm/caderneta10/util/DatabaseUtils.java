@@ -28,7 +28,19 @@ public class DatabaseUtils extends OrmLiteSqliteOpenHelper {
     private static final String DATABASE_NAME = "CadernetaDB.db";
     private static final int DATABASE_VERSION = 1;
 
+    protected static DatabaseUtils databaseUtils;
+
     Class<?> classes[] = {Escola.class, Turma.class, Aluno.class, Disciplina.class, Aula.class, Frequencia.class, Tuplina.class};
+
+    public static DatabaseUtils getInstance(Context context) {
+
+        if (databaseUtils == null) {
+
+            databaseUtils = new DatabaseUtils(context);
+        }
+
+        return databaseUtils;
+    }
 
     public DatabaseUtils(Context context) {
         super(context, Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).getPath() + File.separator +  DATABASE_NAME, null, DATABASE_VERSION);
@@ -36,8 +48,6 @@ public class DatabaseUtils extends OrmLiteSqliteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
-
-        Log.i("HELLO", "HELLO FROM DATABASE");
 
         Log.i(DatabaseUtils.class.getSimpleName(), "Criando database " + DATABASE_NAME);
 

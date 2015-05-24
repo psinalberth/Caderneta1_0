@@ -7,19 +7,29 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import ps.pdm.caderneta10.R;
+import ps.pdm.caderneta10.dao.EscolaDAO;
+import ps.pdm.caderneta10.model.Escola;
 import ps.pdm.caderneta10.util.DatabaseUtils;
 
 
 public class Principal extends ActionBarActivity {
 
-    private DatabaseUtils databaseUtils;
+    private EscolaDAO escolaDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-        databaseUtils = new DatabaseUtils(this);
-        databaseUtils.getWritableDatabase();
+
+        DatabaseUtils.getInstance(this).getWritableDatabase();
+
+        escolaDAO = new EscolaDAO(DatabaseUtils.getInstance(this).getConnectionSource(), this);
+
+        Escola escola = new Escola();
+        escola.setNome("Colégio Educator");
+
+        escolaDAO.salvar(escola);
+
         Log.i("HELLO", "HELLO WORLD!");
     }
 
