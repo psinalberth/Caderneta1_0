@@ -28,18 +28,18 @@ public class DatabaseUtils extends OrmLiteSqliteOpenHelper {
     private static final String DATABASE_NAME = "CadernetaDB.db";
     private static final int DATABASE_VERSION = 1;
 
-    protected static DatabaseUtils databaseUtils;
+    protected static DatabaseUtils dbUtils;
 
     Class<?> classes[] = {Escola.class, Turma.class, Aluno.class, Disciplina.class, Aula.class, Frequencia.class, Tuplina.class};
 
     public static DatabaseUtils getInstance(Context context) {
 
-        if (databaseUtils == null) {
+        if (dbUtils == null) {
 
-            databaseUtils = new DatabaseUtils(context);
+            dbUtils = new DatabaseUtils(context);
         }
 
-        return databaseUtils;
+        return dbUtils;
     }
 
     public DatabaseUtils(Context context) {
