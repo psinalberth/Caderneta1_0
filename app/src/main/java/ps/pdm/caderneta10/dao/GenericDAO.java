@@ -13,12 +13,18 @@ import java.util.List;
 /**
  * Created by inalberth on 23/05/15.
  *
- * Classe genérica que implementa os métodos CRUD do projeto
+ * Classe genérica que implementa os métodos CRUD do projeto.
  */
 public class GenericDAO<T> {
 
     private Dao<T, Long> dao;
 
+    /**
+     * Construtor da classe
+     *
+     * @param connectionSource Canal de comunicação (database) a ser utilizado.
+     * @param context Contexto da aplicação ao qual será aplicado.
+     */
     public GenericDAO(ConnectionSource connectionSource, Context context) {
 
         try {
@@ -32,6 +38,7 @@ public class GenericDAO<T> {
 
     /**
      * Persiste um novo objeto na database.
+     *
      * @param type Objeto a ser persistido.
      */
     public void salvar(T type) {
@@ -67,6 +74,7 @@ public class GenericDAO<T> {
 
     /**
      * Obtém todos os objetos armazenados em uma coleção na database.
+     *
      * @return Coleção de objetos armazenados em uma coleção na database.
      */
     public List<T> findAll() {
@@ -100,6 +108,7 @@ public class GenericDAO<T> {
 
     /**
      * Remove um objeto da database.
+     *
      * @param type Objeto a ser removido.
      */
     public void excluir(T type) {
