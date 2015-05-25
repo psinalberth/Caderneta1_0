@@ -2,14 +2,12 @@ package ps.pdm.caderneta10.util;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Environment;
 import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
-import java.io.File;
 import java.sql.SQLException;
 
 import ps.pdm.caderneta10.model.Aluno;
@@ -43,7 +41,8 @@ public class DatabaseUtils extends OrmLiteSqliteOpenHelper {
     }
 
     public DatabaseUtils(Context context) {
-        super(context, Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).getPath() + File.separator +  DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
     }
 
     @Override

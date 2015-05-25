@@ -25,14 +25,14 @@ public class Principal extends ActionBarActivity {
 
         escolaDAO = new EscolaDAO(DatabaseUtils.getInstance(this).getConnectionSource(), this);
 
-        /*Escola escola = new Escola();
+        Escola escola = new Escola();
         escola.setNome("Colégio Educator");
 
-        escolaDAO.salvar(escola);*/
+        escolaDAO.salvar(escola);
 
-        Escola e = escolaDAO.findById(Long.valueOf(2));
+        /*Escola e = escolaDAO.findById(Long.valueOf(2));
 
-        Log.i("Escola", e.getNome() + "-" + e.getId());
+        Log.i("Escola", e.getNome() + "-" + e.getId());*/
 
         /*List<Escola> escolas = escolaDAO.findAll();
 
