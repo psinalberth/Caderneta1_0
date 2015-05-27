@@ -7,14 +7,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import ps.pdm.caderneta10.R;
+import ps.pdm.caderneta10.dao.AlunoDAO;
 import ps.pdm.caderneta10.dao.EscolaDAO;
+import ps.pdm.caderneta10.dao.TurmaDAO;
+import ps.pdm.caderneta10.model.Aluno;
 import ps.pdm.caderneta10.model.Escola;
+import ps.pdm.caderneta10.model.Turma;
 import ps.pdm.caderneta10.util.DatabaseUtils;
 
 
 public class Principal extends ActionBarActivity {
 
     private EscolaDAO escolaDAO;
+    private AlunoDAO alunoDAO;
+    private TurmaDAO turmaDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +30,28 @@ public class Principal extends ActionBarActivity {
         DatabaseUtils.getInstance(this).getWritableDatabase();
 
         escolaDAO = new EscolaDAO(DatabaseUtils.getInstance(this).getConnectionSource(), this);
+        alunoDAO = new AlunoDAO(DatabaseUtils.getInstance(this).getConnectionSource(), this);
+        turmaDAO = new TurmaDAO(DatabaseUtils.getInstance(this).getConnectionSource(), this);
 
         Escola escola = new Escola();
         escola.setNome("Colégio Educator");
 
         escolaDAO.salvar(escola);
+
+        Turma turma = new Turma();
+        turma.setDescricao("Turma de Eletrotécnica");
+        turma.setEscola(escola);
+        turma.setTurno("Matutino");
+        turma.setAno(2010);
+
+        turmaDAO.salvar(turma);
+
+        Aluno a = new Aluno();
+        a.setNome("Jax Teller");
+        a.setTurma(turma);
+
+        alunoDAO.salvar(a);
+
 
         /*Escola e = escolaDAO.findById(Long.valueOf(2));
 

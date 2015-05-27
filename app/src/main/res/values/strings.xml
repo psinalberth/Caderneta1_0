@@ -4,5 +4,7 @@
     <string name="app_name">Caderneta 1.0</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_listar_alunos">Alunos</string>
+    <string name="title_activity_cadastrar_aluno">Novo Aluno</string>
 
 </resources>
