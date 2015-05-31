@@ -14,7 +14,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">26sp</item>
-        <item name="android:textColor">#ff2cadbf</item>
+        <item name="android:textColor">#63E6CC</item>
         <item name="android:paddingBottom">5sp</item>
     </style>
 
@@ -37,7 +37,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">#ff2cadbf</item>
+        <item name="android:textColor">#37BFB1</item>
         <item name="android:paddingTop">10sp</item>
         <item name="android:paddingBottom">10sp</item>
     </style>

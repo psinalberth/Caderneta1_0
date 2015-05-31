@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 
 import ps.pdm.caderneta10.R;
 import ps.pdm.caderneta10.util.DatabaseUtils;
@@ -14,7 +14,7 @@ import ps.pdm.caderneta10.util.DatabaseUtils;
 
 public class Principal extends ActionBarActivity implements View.OnClickListener {
 
-    private ImageButton btListarAlunos, btNovoAluno;
+    private Button btListarAlunos, btNovoAluno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +23,10 @@ public class Principal extends ActionBarActivity implements View.OnClickListener
 
         DatabaseUtils.getInstance(this).getWritableDatabase();
 
-        btNovoAluno = (ImageButton) findViewById(R.id.btNovoAluno);
+        btNovoAluno = (Button) findViewById(R.id.btNovoAluno);
         btNovoAluno.setOnClickListener(this);
 
-        btListarAlunos = (ImageButton) findViewById(R.id.btListarAlunos);
+        btListarAlunos = (Button) findViewById(R.id.btListarAlunos);
         btListarAlunos.setOnClickListener(this);
     }
 

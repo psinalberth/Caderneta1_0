@@ -28,6 +28,8 @@ public class CadastrarAlunoActivity extends ActionBarActivity implements View.On
     private AlunoDAO alunoDAO;
     private Aluno aluno;
 
+    private TextView lbTitulo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +44,9 @@ public class CadastrarAlunoActivity extends ActionBarActivity implements View.On
         btCancelar = (Button) findViewById(R.id.btCancelar);
         btCancelar.setOnClickListener(this);
 
-        ArrayAdapter turmaAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,
+        lbTitulo = (TextView) findViewById(R.id.lbTitulo);
+
+        ArrayAdapter turmaAdapter = new ArrayAdapter(this, R.layout.caderneta_spinner_item,
                 new TurmaDAO(DatabaseUtils.getInstance(this).getConnectionSource(), this).findAll());
 
         cbTurma.setAdapter(turmaAdapter);
@@ -53,12 +57,18 @@ public class CadastrarAlunoActivity extends ActionBarActivity implements View.On
 
             aluno = getIntent().getExtras().getParcelable("aluno");
 
+            lbTitulo.setText("Editar Aluno");
             txtNome.setText(aluno.getNome(), TextView.BufferType.EDITABLE);
             cbTurma.setSelection(Integer.parseInt(aluno.getTurma().getId().toString())-1);
-
         }
     }
 
+    /**
+     * Verifica se a <code>Activity</code> está sendo utilizada para salvar um novo <code>Aluno</code> ou editar um existente.
+     *
+     * @return Retorna <code>true</code> a <code>Activity</code> esteja sendo utilizada para editar um <code>Aluno</code>
+     * ou <code>false</code> caso seja para criar um novo registro.
+     */
     private boolean isEditando() {
 
         if (getIntent().getExtras() != null) {

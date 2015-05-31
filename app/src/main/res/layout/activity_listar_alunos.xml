@@ -7,9 +7,23 @@
     android:orientation="vertical"
     tools:context="ps.pdm.caderneta10.activity.ListarAlunosActivity">
 
-    <TextView
-        style="@style/CadernetaSectionHeader"
-        android:text="Alunos"/>
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/list"/>
+
+
+        <TextView
+            android:paddingLeft="10sp"
+            android:textSize="30sp"
+            style="@style/CadernetaSectionHeader"
+            android:text="Listar Alunos"/>
+
+    </LinearLayout>
 
     <ListView android:id="@android:id/list"
         android:layout_width="match_parent"
