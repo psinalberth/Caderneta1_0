@@ -17,6 +17,8 @@ import java.util.HashSet;
 @DatabaseTable(tableName = "AULA")
 public class Aula implements Serializable {
 
+    private static final long serialVersionUID = 0L;
+
     @DatabaseField(generatedId = true)
     private Long id;
 

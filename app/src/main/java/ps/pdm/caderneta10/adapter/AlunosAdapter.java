@@ -14,6 +14,8 @@ import ps.pdm.caderneta10.model.Aluno;
 
 /**
  * Created by inalberth on 27/05/15.
+ *
+ * Classe que faz a intermediação entre o <code>modelo de dados</code> de <code>Aluno</code> e a <code>ListView</code>.
  */
 public class AlunosAdapter extends BaseAdapter {
 
@@ -38,21 +40,25 @@ public class AlunosAdapter extends BaseAdapter {
         return alunos.get(position).getId();
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         View view = convertView;
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        view  = layoutInflater.inflate(R.layout.aluno_list_item, null);
+        view = layoutInflater.inflate(R.layout.aluno_list_item, null);
 
         Aluno aluno = alunos.get(position);
 
         if (aluno != null) {
 
             TextView lbNome = (TextView) view.findViewById(R.id.lbNome);
-            TextView txtNome = (TextView) view.findViewById(R.id.txtNome);
+            TextView txtNome = (TextView) view.findViewById(R.id.lbTxtNome);
             TextView lbTurma = (TextView) view.findViewById(R.id.lbTurma);
-            TextView txtTurma = (TextView) view.findViewById(R.id.txtTurma);
+            TextView txtTurma = (TextView) view.findViewById(R.id.lbTxtTurma);
 
             if (lbNome != null) {
                 lbNome.setText("Nome: ");
@@ -69,7 +75,6 @@ public class AlunosAdapter extends BaseAdapter {
             if (txtTurma != null) {
                 txtTurma.setText(aluno.getTurma().toString());
             }
-
         }
 
         return view;

@@ -11,9 +11,9 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/CadernetaActionBarTheme" >
         <activity
-            android:name=".activity.ListarAlunosActivity"
+            android:name=".activity.Principal"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,12 +22,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.Principal"
-            android:label="@string/title_activity_listar_alunos" >
+            android:name=".activity.ListarAlunosActivity">
         </activity>
         <activity
-            android:name=".activity.CadastrarAlunoActivity"
-            android:label="@string/title_activity_cadastrar_aluno" >
+            android:name=".activity.CadastrarAlunoActivity">
         </activity>
     </application>
 

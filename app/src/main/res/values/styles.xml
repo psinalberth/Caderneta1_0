@@ -2,7 +2,73 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        
         <!-- Customize your theme here. -->
+
+    </style>
+
+    <!-- Estilo para cabeçalhos do layout -->
+    
+    <style name="CadernetaSectionHeader">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">#ff2cadbf</item>
+        <item name="android:paddingBottom">5sp</item>
+    </style>
+
+    <!-- Estilo para TextView do Form -->
+    
+    <style name="CadernetaFormViewText">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">10sp</item>
+        <item name="android:paddingBottom">10sp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Estilo para EditText do Form -->
+
+    <style name="CadernetaFormEditText">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#ff2cadbf</item>
+        <item name="android:paddingTop">10sp</item>
+        <item name="android:paddingBottom">10sp</item>
+    </style>
+
+    <!-- Estilo para os botões da aplicação -->
+
+    <style name="CadernetaButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:layout_marginTop">10sp</item>
+    </style>
+
+    <!-- Estilo para 'nome da coluna recuperada' para exibir em ListView -->
+
+    <style name="CadernetaTextViewLabel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#ff6fdade</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Estilo para 'valor da coluna recuperada' para exibir em ListView -->
+
+    <style name="CadernetaTextViewField">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:paddingBottom">16sp</item>
     </style>
 
 </resources>

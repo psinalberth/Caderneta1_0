@@ -4,15 +4,70 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import ps.pdm.caderneta10.R;
+import ps.pdm.caderneta10.dao.AlunoDAO;
+import ps.pdm.caderneta10.dao.TurmaDAO;
+import ps.pdm.caderneta10.model.Aluno;
+import ps.pdm.caderneta10.model.Turma;
+import ps.pdm.caderneta10.util.DatabaseUtils;
 
-public class CadastrarAlunoActivity extends ActionBarActivity {
+public class CadastrarAlunoActivity extends ActionBarActivity implements View.OnClickListener {
+
+    private EditText txtNome;
+    private Spinner cbTurma;
+
+    private Button btSalvar, btCancelar;
+
+    private AlunoDAO alunoDAO;
+    private Aluno aluno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_aluno);
+
+        txtNome = (EditText) findViewById(R.id.txtNome);
+        cbTurma = (Spinner) findViewById(R.id.cbTurma);
+
+        btSalvar = (Button) findViewById(R.id.btSalvar);
+        btSalvar.setOnClickListener(this);
+
+        btCancelar = (Button) findViewById(R.id.btCancelar);
+        btCancelar.setOnClickListener(this);
+
+        ArrayAdapter turmaAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,
+                new TurmaDAO(DatabaseUtils.getInstance(this).getConnectionSource(), this).findAll());
+
+        cbTurma.setAdapter(turmaAdapter);
+
+        alunoDAO = new AlunoDAO(DatabaseUtils.getInstance(this).getConnectionSource(), this);
+
+        if (isEditando()) {
+
+            aluno = getIntent().getExtras().getParcelable("aluno");
+
+            txtNome.setText(aluno.getNome(), TextView.BufferType.EDITABLE);
+            cbTurma.setSelection(Integer.parseInt(aluno.getTurma().getId().toString())-1);
+
+        }
+    }
+
+    private boolean isEditando() {
+
+        if (getIntent().getExtras() != null) {
+
+            return true;
+
+        } else {
+            return false;
+        }
     }
 
 
@@ -36,5 +91,40 @@ public class CadastrarAlunoActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+
+            case R.id.btSalvar: {
+
+                String nome = txtNome.getText().toString();
+                Turma turma = (Turma) cbTurma.getSelectedItem();
+
+                if (!isEditando()) {
+
+                    aluno = new Aluno();
+                }
+
+                aluno.setNome(nome);
+                aluno.setTurma(turma);
+
+                alunoDAO.salvar(aluno);
+
+                finish();
+
+                break;
+            }
+
+            case R.id.btCancelar: {
+
+                aluno = null;
+                finish();
+
+                break;
+            }
+        }
     }
 }

@@ -1,26 +1,20 @@
 package ps.pdm.caderneta10.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 import ps.pdm.caderneta10.R;
-import ps.pdm.caderneta10.dao.AlunoDAO;
-import ps.pdm.caderneta10.dao.EscolaDAO;
-import ps.pdm.caderneta10.dao.TurmaDAO;
-import ps.pdm.caderneta10.model.Aluno;
-import ps.pdm.caderneta10.model.Escola;
-import ps.pdm.caderneta10.model.Turma;
 import ps.pdm.caderneta10.util.DatabaseUtils;
 
 
-public class Principal extends ActionBarActivity {
+public class Principal extends ActionBarActivity implements View.OnClickListener {
 
-    private EscolaDAO escolaDAO;
-    private AlunoDAO alunoDAO;
-    private TurmaDAO turmaDAO;
+    private ImageButton btListarAlunos, btNovoAluno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,42 +23,11 @@ public class Principal extends ActionBarActivity {
 
         DatabaseUtils.getInstance(this).getWritableDatabase();
 
-        escolaDAO = new EscolaDAO(DatabaseUtils.getInstance(this).getConnectionSource(), this);
-        alunoDAO = new AlunoDAO(DatabaseUtils.getInstance(this).getConnectionSource(), this);
-        turmaDAO = new TurmaDAO(DatabaseUtils.getInstance(this).getConnectionSource(), this);
+        btNovoAluno = (ImageButton) findViewById(R.id.btNovoAluno);
+        btNovoAluno.setOnClickListener(this);
 
-        Escola escola = new Escola();
-        escola.setNome("Colégio Educator");
-
-        escolaDAO.salvar(escola);
-
-        Turma turma = new Turma();
-        turma.setDescricao("Turma de Eletrotécnica");
-        turma.setEscola(escola);
-        turma.setTurno("Matutino");
-        turma.setAno(2010);
-
-        turmaDAO.salvar(turma);
-
-        Aluno a = new Aluno();
-        a.setNome("Jax Teller");
-        a.setTurma(turma);
-
-        alunoDAO.salvar(a);
-
-
-        /*Escola e = escolaDAO.findById(Long.valueOf(2));
-
-        Log.i("Escola", e.getNome() + "-" + e.getId());*/
-
-        /*List<Escola> escolas = escolaDAO.findAll();
-
-        for (Escola e: escolas) {
-
-            Log.i("Escola", e.getNome());
-        }*/
-
-        Log.i("HELLO", "HELLO WORLD!");
+        btListarAlunos = (ImageButton) findViewById(R.id.btListarAlunos);
+        btListarAlunos.setOnClickListener(this);
     }
 
 
@@ -88,5 +51,24 @@ public class Principal extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        Intent intent = null;
+
+        switch (v.getId()) {
+
+            case R.id.btNovoAluno:
+                intent = new Intent(this, CadastrarAlunoActivity.class);
+                break;
+
+            case R.id.btListarAlunos:
+                intent = new Intent(this, ListarAlunosActivity.class);
+                break;
+        }
+
+        startActivity(intent);
     }
 }

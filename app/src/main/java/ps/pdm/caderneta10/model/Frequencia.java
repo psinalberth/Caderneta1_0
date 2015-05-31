@@ -4,11 +4,15 @@ import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
+
 /**
  * Created by inalberth on 23/05/15.
  */
 @DatabaseTable(tableName = "FREQUENCIA")
-public class Frequencia {
+public class Frequencia implements Serializable {
+
+    private static final long serialVersionUID = 0L;
 
     @DatabaseField(foreign = true, uniqueCombo = true, dataType = DataType.SERIALIZABLE)
     private Aluno aluno;

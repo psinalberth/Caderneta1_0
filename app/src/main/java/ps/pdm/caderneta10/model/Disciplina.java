@@ -5,6 +5,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -12,7 +13,9 @@ import java.util.HashSet;
  * Created by inalberth on 23/05/15.
  */
 @DatabaseTable(tableName = "DISCIPLINA")
-public class Disciplina {
+public class Disciplina implements Serializable {
+
+    private static final long serialVersionUID = 0L;
 
     @DatabaseField(generatedId = true)
     private Long id;

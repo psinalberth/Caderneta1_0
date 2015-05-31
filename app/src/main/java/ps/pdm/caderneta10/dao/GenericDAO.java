@@ -45,7 +45,7 @@ public class GenericDAO<T> {
 
         try {
 
-            dao.create(type);
+            dao.createOrUpdate(type);
 
         } catch (SQLException e) {
             e.printStackTrace();

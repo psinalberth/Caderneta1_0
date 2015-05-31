@@ -4,19 +4,15 @@
     android:layout_height="match_parent">
 
     <TextView android:id="@+id/lbNome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        style="@style/CadernetaTextViewLabel"/>
 
-    <TextView android:id="@+id/txtNome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <TextView android:id="@+id/lbTxtNome"
+        style="@style/CadernetaTextViewField"/>
 
     <TextView android:id="@+id/lbTurma"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        style="@style/CadernetaTextViewLabel"/>
 
-    <TextView android:id="@+id/txtTurma"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <TextView android:id="@+id/lbTxtTurma"
+        style="@style/CadernetaTextViewField"/>
 
 </LinearLayout>
