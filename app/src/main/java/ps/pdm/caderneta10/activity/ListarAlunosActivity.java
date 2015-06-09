@@ -140,6 +140,13 @@ public class ListarAlunosActivity extends ActionBarActivity {
             return true;
         }
 
+        if (id == R.id.action_novo_aluno) {
+
+            Intent intent = new Intent(this, CadastrarAlunoActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }

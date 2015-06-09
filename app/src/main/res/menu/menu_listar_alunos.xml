@@ -4,4 +4,6 @@
     tools:context="ps.pdm.caderneta10.activity.ListarAlunosActivity">
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_novo_aluno" android:title="Novo Aluno"
+        android:icon="@drawable/student" app:showAsAction="ifRoom"/>
 </menu>

@@ -29,7 +29,8 @@ public class GenericDAO<T> {
 
         try {
 
-            dao = DaoManager.createDao(connectionSource, (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
+            dao = DaoManager.createDao(connectionSource,
+                    (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
 
         } catch (SQLException e) {
             e.printStackTrace();
